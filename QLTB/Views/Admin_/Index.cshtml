@@ -1,0 +1,113 @@
+﻿@model IEnumerable<QLTB.Models.DEVICE>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Danh sách thiết bị</h1>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">  
+        <div class="card-body">
+            <div style="float:right;"> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"> Thêm mới</i></button></div>
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            
+                            <th style="color:black;">Tên thiết bị</th>
+                            <th style="color:black;">Model</th>
+                            <th style="color:black;">Serial</th>
+                            <th style="color:black;">Nhà cung cấp</th>
+                            <th style="color:black;">Số lượng</th>
+                            <th style="color:black;">Kế hoạch sửa chữa</th>
+                            <th style="color:black;">Nhân viên</th>
+                            <th style="color:black;">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(model => item.DeviceName)</td>
+                                <td>@Html.DisplayFor(model => item.Model)</td>
+                                <td>@Html.DisplayFor(model => item.Serial)</td>
+                                <td>@Html.DisplayFor(model => item.VendorName)</td>
+                                <td>@Html.DisplayFor(model => item.Qty)</td>
+                                <td>@Html.DisplayFor(model => item.Purpose)</td>
+                                <td>@Html.DisplayFor(model => item.Creator)</td>
+                                <td>
+                                    <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
+                                    <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        }
+                       
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="col-12" style="margin:5px 0px;">
+                        <label>Tên thiết bị:</label>     
+                        <input type="text" class="form-control" />
+                </div>
+                <div class="container-modal" style="margin:5px 0px;">
+                    <div class="col-6" style="float:left;">
+                        <label>Model</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                    <div class="col-6" style="float:left;">
+                       <label>Serial</label>
+                       <input type="text" class="form-control" />
+                   </div>
+                </div>
+                <div class="container-modal" style="margin:5px 0px;">
+                    <div class="col-6" style="float:left;">
+                        <label>Nhà cung cấp:</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                    <div class="col-6" style="float:left;">
+                        <label>Số lượng:</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+                <div class="container-modal" style="margin:5px 0px;">
+                    <div class="col-6" style="float:left;">
+                        <label>Nhóm thiết bị:</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                    <div class="col-6" style="float:left;">
+                        <label>Mục đích:</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+                <div class="container-modal" style="margin:5px 0px;">
+                    <div class="col-6" style="float:left;">
+                        <label>Kế hoạch sửa chữa:</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                    <div class="col-6" style="float:left;">
+                        <label>Ghi chú:</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
