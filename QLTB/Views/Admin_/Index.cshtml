@@ -10,12 +10,16 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">  
         <div class="card-body">
-            <div style="float:right;"> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"> Thêm mới</i></button></div>
+            <div style="float:right;"> 
+            <button type="button" onclick="Them()" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                <i class="fa fa-plus"> Thêm mới</i>
+            </button>
+            </div>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            
+                            <th style="color:black;">STT</th>
                             <th style="color:black;">Tên thiết bị</th>
                             <th style="color:black;">Model</th>
                             <th style="color:black;">Serial</th>
@@ -27,17 +31,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
+                     @{int i = 0; }
                         @foreach (var item in Model)
                         {
+                            i++;
+
                             <tr>
-                                <td>@Html.DisplayFor(model => item.DeviceName)</td>
-                                <td>@Html.DisplayFor(model => item.Model)</td>
-                                <td>@Html.DisplayFor(model => item.Serial)</td>
-                                <td>@Html.DisplayFor(model => item.VendorName)</td>
-                                <td>@Html.DisplayFor(model => item.Qty)</td>
-                                <td>@Html.DisplayFor(model => item.Purpose)</td>
-                                <td>@Html.DisplayFor(model => item.Creator)</td>
+                                <td>@i</td>
+                                <td>@item.DeviceName</td>
+                                <td>@item.Model</td>
+                                <td>@item.Serial</td>
+                                <td>@item.VendorName</td>
+                                <td>@item.Qty</td>
+                                <td>@item.Purpose</td>
+                                <td>@item.Creator</td>
                                 <td>
                                     <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
                                     <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
@@ -62,54 +69,73 @@
             <div class="modal-body">
                 <div class="col-12" style="margin:5px 0px;">
                         <label>Tên thiết bị:</label>     
-                        <input type="text" class="form-control" />
+                        <input type="text" class="form-control" placeholder="Tên thiết bị" required id="DeviceName" name="DeviceName"/>
                 </div>
                 <div class="container-modal" style="margin:5px 0px;">
                     <div class="col-6" style="float:left;">
                         <label>Model</label>
-                        <input type="text" class="form-control" />
+                        <input type="text" class="form-control" placeholder="Model" required id="Model" name="Model"/>
                     </div>
                     <div class="col-6" style="float:left;">
                        <label>Serial</label>
-                       <input type="text" class="form-control" />
+                       <input type="text" class="form-control" placeholder="Serial" required id="Serial" name="Serial"/>
                    </div>
                 </div>
                 <div class="container-modal" style="margin:5px 0px;">
                     <div class="col-6" style="float:left;">
                         <label>Nhà cung cấp:</label>
-                        <input type="text" class="form-control" />
+                        <input type="text" class="form-control" placeholder="Nhà cung cấp" required id="VendorName" name="VendorName" />
                     </div>
                     <div class="col-6" style="float:left;">
                         <label>Số lượng:</label>
-                        <input type="text" class="form-control" />
+                        <input type="text" class="form-control" placeholder="Số lượng" required id="Qty" name="Qty"/>
                     </div>
                 </div>
                 <div class="container-modal" style="margin:5px 0px;">
                     <div class="col-6" style="float:left;">
                         <label>Nhóm thiết bị:</label>
-                        <select class="form-control" id="">
+                        <select class="form-control" id="DeviceGroup" name="DeviceGroup">
                             <option></option>
                         </select>
                     </div>
                     <div class="col-6" style="float:left;">
                         <label>Mục đích:</label>
-                        <input type="text" class="form-control" />
+                        <input type="text" class="form-control" placeholder="Mục đích" required id="Purpose" name="Purpose" />
                     </div>
                 </div>
                 <div class="container-modal" style="margin:5px 0px;">
                     <div class="col-6" style="float:left;">
                         <label>Kế hoạch sửa chữa:</label>
-                        <input type="date" class="form-control" />
+                        <input type="date" class="form-control" id="DateMaintenance" name="DateMaintenance"/>
                     </div>
                     <div class="col-6" style="float:left;">
                         <label>Ghi chú:</label>
-                        <input type="text" class="form-control" />
+                        <input type="text" class="form-control" placeholder="" required id="Remark" name="Remark" />
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                <button type="submit" class="btn btn-success" data-dismiss="modal" id="btn_Add" value="Thêm">Lưu</button>
             </div>
         </div>
     </div>
 </div>
+<script>
+    function Them() {
+        $SetNull();
+        $('btn_Add').show();
+    }
+    function SetNull() {
+        $("#Id").val(''),
+        $("#DeviceName").val(''),
+        $("#Model").val(''),
+        $("#Serial").val(''),
+        $("#VendorName").val(''),
+        $("#Qty").val(''),
+        $("#DeviceGroup").val(''),
+        $("#Remark").val(''),
+        $("#Purpose").val(''),
+        $("#DateMaintenance").val('')
+    }
+</script>

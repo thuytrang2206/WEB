@@ -202,14 +202,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\DEVICE.cs" />
-    <Compile Include="Models\GROUP_DEVICE.cs" />
-    <Compile Include="Models\HISTORY.cs" />
+    <Compile Include="Models\EF\DEVICE.cs" />
+    <Compile Include="Models\EF\GROUP_DEVICE.cs" />
+    <Compile Include="Models\EF\HISTORY.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\QLTB_Model.cs" />
-    <Compile Include="Models\RULE.cs" />
-    <Compile Include="Models\USER.cs" />
+    <Compile Include="Models\EF\QLTB_Model.cs" />
+    <Compile Include="Models\EF\RULE.cs" />
+    <Compile Include="Models\EF\USER.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -2112,6 +2112,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\DAO\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

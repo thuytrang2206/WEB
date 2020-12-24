@@ -18,6 +18,36 @@ namespace QLTB.Controllers
             var model = db.DEVICEs.Where(d => d.IsUsing == true).ToList();
             return View(model);
         }
+
+        [HttpPost]
+        public ActionResult Add_Device(DEVICE dev, string submit)
+        {
+            List<DEVICE> list = db.DEVICEs.ToList();
+            DEVICE device = new DEVICE();
+            if (submit == "Thêm")
+            {
+                if(dev != null)
+                {
+                    dev.DeviceName = dev.DeviceName;
+                    db.DEVICEs.Add(dev);
+                    db.SaveChanges();
+                    dev = null;
+                }
+                var model = db.DEVICEs.ToList();
+                return View("DEVICE", model);
+            }
+            else if (submit == "Lưu")
+            {
+                if(dev!= null)
+                {
+                    var d = db.DEVICEs.SingleOrDefault(x => x.Id == dev.Id);
+                    d.DeviceName = dev.DeviceName;
+                    db.SaveChanges();
+                    dev = null;
+                }
+            }
+            return View();
+        }
         public ActionResult Edit(string Id)
         {
 
